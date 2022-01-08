@@ -18,7 +18,7 @@ class Singleton {
 
    public:
     template <typename... Args>
-    static T* instance(Args... args) noexcept {
+    static T const * const instance(Args... args) noexcept {
         static std::mutex mutex;
         static std::atomic<T*> instance;
 
