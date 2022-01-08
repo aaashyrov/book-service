@@ -12,6 +12,10 @@ services:
     build:
       context: "./"
       dockerfile: "Dockerfile"
+      args:
+        TIMEZONE: "Europe/Minsk"
+        UBUNTUVERSION: "20.04"
+
     depends_on:
       - mongo
 
