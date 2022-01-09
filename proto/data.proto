@@ -103,3 +103,26 @@ message User {
   string password = 9;
 }
 
+message Users {
+  repeated User users = 1;
+}
+
+message Books {
+  repeated Book books = 1;
+}
+
+message Status{
+  bool ok = 1;
+  string message = 2;
+}
+
+message GetUsersListResponse{
+  Status status = 1;
+  Users content = 2;
+}
+
+message GetBooksListResponse{
+  Status status = 1;
+  Books content = 2;
+}
+
