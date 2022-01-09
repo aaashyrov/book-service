@@ -1,0 +1,49 @@
+{
+  "listeners": [
+    {
+      "port": 8080
+    }
+  ],
+  "app": {
+    "enable_session": false,
+    "session_timeout": 0,
+    "document_root": "./",
+    "max_connections": 100000,
+    "max_connections_per_ip": 0,
+    "dynamic_views_output_path": "",
+    "enable_unicode_escaping_in_json": true,
+    "log": {
+      "log_path": "/tmp",
+      "logfile_base_name": "books.log",
+      "log_size_limit": 100000000,
+      "log_level": "DEBUG"
+    },
+    "run_as_daemon": false,
+    "relaunch_on_error": false,
+    "use_sendfile": true,
+    "use_gzip": true,
+    "use_brotli": false,
+    "static_files_cache_time": 5,
+    "idle_connection_timeout": 60,
+    "server_header_field": "",
+    "enable_server_header": true,
+    "enable_date_header": true,
+    "keepalive_requests": 0,
+    "pipelining_requests": 0,
+    "gzip_static": true,
+    "br_static": true,
+    "client_max_body_size": "64M",
+    "client_max_memory_body_size": "",
+    "client_max_websocket_message_size": "128K"
+  },
+  "plugins": [
+    {
+      "name": "Database",
+      "dependencies": [],
+      "config": {
+        "ip_addr": "127.0.0.1",
+        "name": "Test1"
+      }
+    }
+  ]
+}
