@@ -38,15 +38,11 @@ class MongoDB : public Singleton<MongoDB> {
    public:
     Result removeUserById(std::string const& id) noexcept;
     Result addUser(book::User& user, std::string& id) noexcept;
-    Result updateUserFieldById(std::string const& id, std::string const& name, std::string const& value) noexcept;
-    Result updateUserFieldById(std::string const& login, std::string const& fieldName, std::vector<std::string> const& vector) noexcept;
-
+    Result getBooksByUserId(std::string const& userId, std::vector<book::Book>& books) noexcept;
     Result getUserById(std::string const& id, book::User& user) noexcept;
-
-    Result addBook(book::Book book, std::string& id) noexcept;
-    Result updateBook(book::Book const& book) noexcept;
-    Result removeBookById(std::string const& id) noexcept;
-    Result getBookById(std::string const& id) noexcept;
+    Result removeBookByUserId(std::string const& id, std::string const& bookId) noexcept;
+    Result addBookByUserId(std::string const& id, book::Book& book, std::string& bookId) noexcept;
+    Result updateUserFieldById(std::string const& id, std::string const& name, std::string const& value) noexcept;
 
    private:
     std::unique_ptr<Connection> m_connection;

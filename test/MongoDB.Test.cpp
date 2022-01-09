@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 
 TEST(User, MongoDB) {
-    auto database = MongoDB::instance("127.0.0.1", "Test1");
+    auto database = MongoDB::instance("127.0.0.1", "Test2");
 
     book::User user;
     std::string id;
@@ -18,8 +18,8 @@ TEST(User, MongoDB) {
     user.mutable_birthday()->set_day(19);
     user.mutable_birthday()->set_month(4);
     result = database->addUser(user, id);
-    ASSERT_FALSE(result.ok);
     std::cerr << result.message << std::endl;
+    ASSERT_FALSE(result.ok);
 
     user.set_lastname("Ashyrov");
     user.set_name("Alisher");
@@ -41,13 +41,22 @@ TEST(User, MongoDB) {
     ASSERT_EQ(user.id(), newUser.id());
 
     result = database->getUserById("Unknown", newUser);
-    ASSERT_EQ(user.id(), newUser.id());
-    ASSERT_FALSE(result.ok);
     std::cerr << result.message << std::endl;
+    ASSERT_FALSE(result.ok);
+    ASSERT_EQ(user.id(), newUser.id());
+
+    result = database->updateUserFieldById(id, "tel", "+375 29 153 0 254");
+    std::cerr << result.message << std::endl;
+    ASSERT_TRUE(result.ok);
+    result = database->getUserById(id, newUser);
+    ASSERT_TRUE(result.ok);
+    ASSERT_EQ(newUser.tel(), "+375 29 153 0 254");
 
     result = database->removeUserById(newUser.id());
+    std::cerr << result.message << std::endl;
     ASSERT_TRUE(result.ok);
 
     result = database->getUserById(newUser.id(), newUser);
+    std::cerr << result.message << std::endl;
     ASSERT_FALSE(result.ok);
 }

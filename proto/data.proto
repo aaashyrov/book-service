@@ -66,19 +66,6 @@ enum Sex {
   Female = 1;
 }
 
-message User {
-  string id = 1;
-  string login = 2;
-  string name = 3;
-  string lastname = 4;
-  Date birthday = 5;
-  Sex sex = 6;
-  string email = 7;
-  string tel = 8;
-  string password = 9;
-  repeated string book_ids = 10;
-}
-
 message Deal{
   enum DealType{
     ExchangeOnly = 0;
@@ -102,5 +89,17 @@ message Book {
   repeated string quotes = 9;
   repeated string reviews = 10;
   string user_id = 11;
+}
+
+message User {
+  string id = 1;
+  string login = 2;
+  string name = 3;
+  string lastname = 4;
+  Date birthday = 5;
+  Sex sex = 6;
+  string email = 7;
+  string tel = 8;
+  string password = 9;
 }
 
