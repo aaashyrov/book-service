@@ -1,0 +1,76 @@
+{
+  "content": {
+    "users": [
+      {
+        "id": "2964604866",
+        "login": "se7enrains",
+        "name": "Pete",
+        "lastname": "Ivanov",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1998
+        },
+        "email": "se7enrains@mail.ru",
+        "tel": "1234556",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "3419081864",
+        "login": "ofay54",
+        "name": "Kare",
+        "lastname": "Chick",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 2001
+        },
+        "email": "ofay54@mail.ru",
+        "tel": "1234567",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "1837943884",
+        "login": "viki",
+        "name": "Vika",
+        "lastname": "Simo",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1993
+        },
+        "email": "viki@mail.ru",
+        "tel": "98765321",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "396844864",
+        "login": "sashka",
+        "name": "Sasha",
+        "lastname": "Shido",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "email": "shido@mail.ru",
+        "tel": "187387342",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "1116652169",
+        "login": "diasha",
+        "name": "Dia",
+        "lastname": "Biru",
+        "birthday": {
+          "day": 22,
+          "month": 12,
+          "year": 1998
+        },
+        "email": "dia@mail.ru",
+        "tel": "555555",
+        "password": "qwerty12345"
+      }
+    ]
+  }
+}
