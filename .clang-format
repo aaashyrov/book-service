@@ -1,4 +1,4 @@
----
+﻿---
 BasedOnStyle: LLVM
 AccessModifierOffset: '-1'
 AlignAfterOpenBracket: Align
@@ -12,9 +12,9 @@ AllowAllConstructorInitializersOnNextLine: 'false'
 AllowAllParametersOfDeclarationOnNextLine: 'true'
 AllowShortBlocksOnASingleLine: 'true'
 AllowShortCaseLabelsOnASingleLine: 'false'
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortIfStatementsOnASingleLine: Never
-AllowShortLambdasOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: Inline
 AllowShortLoopsOnASingleLine: 'false'
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
@@ -28,7 +28,7 @@ BreakBeforeTernaryOperators: 'true'
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakStringLiterals: 'false'
-ColumnLimit: "120"
+ColumnLimit: '120'
 CompactNamespaces: 'false'
 ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'
 ContinuationIndentWidth: '4'
@@ -36,23 +36,6 @@ Cpp11BracedListStyle: 'true'
 DerivePointerAlignment: 'false'
 FixNamespaceComments: 'true'
 IncludeBlocks: Regroup
-IncludeCategories:
-  - Regex: '<[[:alnum:]_/]+\.h>'
-    Priority: 1
-    CaseSensitive: true
-  - Regex: '<[[:alnum:]_]+>'
-    Priority: 2
-    CaseSensitive: true
-  - Regex: '\"[[:alnum:]_/]+\.h\"'
-    Priority: 3
-    CaseSensitive: true
-  - Regex: '<[[:alnum:]_/]+\.hpp>'
-    Priority: 4
-    CaseSensitive: true
-  - Regex: '\"[[:alnum:]_/]+\.hpp\"'
-    Priority: 5
-    CaseSensitive: true
-
 IndentCaseLabels: 'true'
 IndentPPDirectives: None
 IndentWidth: '4'
@@ -83,5 +66,3 @@ SpacesInParentheses: 'false'
 SpacesInSquareBrackets: 'false'
 TabWidth: '4'
 UseTab: Never
-
-...

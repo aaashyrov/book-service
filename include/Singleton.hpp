@@ -7,10 +7,14 @@
 
 template <typename T>
 class Singleton {
+   public:
+    using Ptr = T*;
+
    protected:
     Singleton() = default;
 
    public:
+    ~Singleton() = default;
     Singleton(Singleton const&) = delete;
     Singleton(Singleton&&) noexcept = default;
     Singleton& operator=(Singleton const&) = delete;
@@ -18,7 +22,7 @@ class Singleton {
 
    public:
     template <typename... Args>
-    static T const * const instance(Args... args) noexcept {
+    static Ptr instance(Args... args) noexcept {
         static std::mutex mutex;
         static std::atomic<T*> instance;
 
@@ -27,12 +31,9 @@ class Singleton {
             std::lock_guard _ {mutex};
 
             isLoaded = instance.load() != nullptr;
-            if (not isLoaded) {
-                instance = new T(args...);
-            }
+            if (not isLoaded) { instance = new T(args...); }
         }
 
         return instance;
     }
 };
-

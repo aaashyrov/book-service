@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package book;
+
+enum BookType{
+  NonFiction = 0;
+  Fiction = 1;
+}
+
+enum Genre {
+  Unknown = 0;
+
+  Art = 1;
+  Autobiography = 2;
+  Biography = 3;
+  Business = 4;
+  Crafts = 5;
+  Cookbook = 6;
+  Diary = 7;
+  Dictionary = 8;
+  Encyclopedia = 9;
+  Guide = 10;
+  Health = 11;
+  History = 12;
+  Journal = 13;
+  Math = 14;
+  Memoir = 15;
+  Philosophy = 16;
+  Prayer = 17;
+  Religion = 18;
+  Textbook = 19;
+  Review = 20;
+  Science = 21;
+  Travel = 22;
+
+  Adventure = 101;
+  AltHistory = 102;
+  Anthology = 103;
+  ChickLit = 104;
+  Childrens = 105;
+  Classic = 106;
+  Comics = 107;
+  Crime = 108;
+  Drama = 109;
+  Erotica = 110;
+  Fantasy = 111;
+  Fairytale = 112;
+  Horror = 113;
+  Mystery = 114;
+  Poetry = 115;
+  Romance = 116;
+  Satire = 117;
+  SciFi = 118;
+  Thriller = 119;
+  Western = 120;
+}
+
+message Date {
+  uint32 day = 1;
+  uint32 month = 2;
+  uint32 year = 3;
+}
+
+enum Sex {
+  Male = 0;
+  Female = 1;
+}
+
+message User {
+  string id = 1;
+  string login = 2;
+  string name = 3;
+  string lastname = 4;
+  Date birthday = 5;
+  Sex sex = 6;
+  string email = 7;
+  string tel = 8;
+  string password = 9;
+  repeated string book_ids = 10;
+}
+
+message Deal{
+  enum DealType{
+    ExchangeOnly = 0;
+    SaleOnly = 1;
+    SaleAndExchange = 2;
+  }
+
+  DealType deal_type = 1;
+  float price = 2;
+}
+
+message Book {
+  string id = 1;
+  BookType book_type = 2;
+  Genre genre = 3;
+  string name = 4;
+  Deal deal = 5;
+  uint32 pages = 6;
+  Date publish = 7;
+  string authors = 8;
+  repeated string quotes = 9;
+  repeated string reviews = 10;
+  string user_id = 11;
+}
+
