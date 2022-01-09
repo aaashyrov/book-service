@@ -123,6 +123,7 @@ Result MongoDB::removeUserById(std::string const& id) noexcept {
             return result;
         }
 
+        m_connection->collections.book.delete_many(document {} << "userId" << id << finalize);
         auto value = m_connection->collections.user.delete_one(document {} << "id" << id << finalize);
         if (not value) {
             result.message = "User id " + id + " is not found";
@@ -227,7 +228,7 @@ Result MongoDB::addBookByUserId(const std::string& userId, book::Book& book, std
     }
 }
 
-Result MongoDB::getBooksByUserId(std::string const& userId, std::vector<book::Book>& books) noexcept {
+Result MongoDB::getBooksByUserId(std::string const& userId, book::Books& books) noexcept {
     Result result;
     result.ok = false;
     try {
@@ -236,9 +237,50 @@ Result MongoDB::getBooksByUserId(std::string const& userId, std::vector<book::Bo
         auto cursor = m_connection->collections.book.find(document {} << "userId" << userId << finalize);
 
         for (auto doc : cursor) {
-            book::Book newBook;
-            BsonDocumentValueToMessage<book::Book>(bsoncxx::from_json(bsoncxx::to_json(doc)));
-            books.push_back(newBook);
+            auto newBook = BsonDocumentValueToMessage<book::Book>(bsoncxx::from_json(bsoncxx::to_json(doc)));
+            books.mutable_books()->Add()->CopyFrom(newBook);
+        }
+
+        result.ok = true;
+        return result;
+    } catch (std::exception& ex) {
+        result.ok = false;
+        result.message = ex.what();
+        return result;
+    }
+}
+
+Result MongoDB::getBooks(book::Books& books) noexcept {
+    Result result;
+    result.ok = false;
+    try {
+        using namespace bsoncxx::builder::stream;
+
+        auto cursor = m_connection->collections.book.find({});
+        for (auto doc : cursor) {
+            auto newBook = BsonDocumentValueToMessage<book::Book>(bsoncxx::from_json(bsoncxx::to_json(doc)));
+            books.mutable_books()->Add()->CopyFrom(newBook);
+        }
+
+        result.ok = true;
+        return result;
+    } catch (std::exception& ex) {
+        result.ok = false;
+        result.message = ex.what();
+        return result;
+    }
+}
+
+Result MongoDB::getUsers(book::Users& users) noexcept {
+    Result result;
+    result.ok = false;
+    try {
+        using namespace bsoncxx::builder::stream;
+
+        auto cursor = m_connection->collections.user.find({});
+        for (auto doc : cursor) {
+            auto newUser = BsonDocumentValueToMessage<book::User>(bsoncxx::from_json(bsoncxx::to_json(doc)));
+            users.mutable_users()->Add()->CopyFrom(newUser);
         }
 
         result.ok = true;
