@@ -37,6 +37,7 @@ set(PROTOS
 
 set(HEADERS
         include/util.hpp
+        include/Connection.hpp
         include/MongoDB.hpp
         include/Singleton.hpp
         include/Controller.hpp
@@ -46,6 +47,7 @@ set(HEADERS
 set(SOURCES
         src/MongoDB.cpp
         src/Controller.cpp
+        src/Connection.cpp
         src/Demo.cpp
         src/util.cpp
         )

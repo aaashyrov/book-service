@@ -5,8 +5,15 @@
 #include <gtest/gtest.h>
 #include <util.hpp>
 
-TEST(User, MongoDB) {
-    auto database = MongoDB::instance("127.0.0.1", "Test2\3");
+TEST(Test1, MongoDB) {
+    Param u, b;
+    u.dbName = "user_db";
+    u.ipAddr = "127.0.0.1";
+
+    b.dbName = "book_db";
+    b.ipAddr = "127.0.0.1";
+
+    auto database = MongoDB::instance(b, u);
 
     book::User user;
     std::string id;
@@ -62,11 +69,20 @@ TEST(User, MongoDB) {
     ASSERT_FALSE(result.ok);
 }
 
-TEST(Test, MongoDB) {
+TEST(Test2, MongoDB) {
     using namespace book;
     std::vector<std::string> userIds;
     std::vector<std::string> bookIds;
-    auto database = MongoDB::instance("127.0.2.1", "Test3");
+
+    Param u, b;
+    u.dbName = "user_db";
+    u.ipAddr = "127.0.0.1";
+
+    b.dbName = "book_db";
+    b.ipAddr = "127.0.0.1";
+
+    auto database = MongoDB::instance(b, u);
+
     User user;
     Book book;
     {
