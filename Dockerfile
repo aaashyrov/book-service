@@ -55,5 +55,8 @@ RUN cp /usr/src/book-service/config/config.json /usr/local/etc/config.json
 RUN cp /usr/src/book-service/config/snapshot.json /usr/local/etc/snapshot.json
 
 EXPOSE 8080
+EXPOSE 27017
+EXPOSE 27018
+EXPOSE 27019
 
 ENTRYPOINT /usr/local/bin/book-service /usr/local/etc/config.json
