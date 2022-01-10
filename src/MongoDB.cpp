@@ -189,8 +189,8 @@ Result MongoDB::addBookByUserId(const std::string& userId, book::Book& book, std
             return result;
         }
 
-        bookId = generateId(book.name() + userId + book.authors());
-        book.set_id(userId);
+        if (bookId.empty()) { bookId = generateId(book.name() + userId + book.authors()); }
+        book.set_id(bookId);
         m_bookConnection->collection().insert_one(MessageToBsonDocumentValue(book));
 
         result.ok = true;
@@ -281,6 +281,7 @@ Result MongoDB::getUsers(book::Users& users) noexcept {
         return result;
     }
 }
+
 Result MongoDB::getBookById(const std::string& bookId, book::Book& book) noexcept {
     Result result;
     result.ok = false;
@@ -300,4 +301,23 @@ Result MongoDB::getBookById(const std::string& bookId, book::Book& book) noexcep
         result.message = ex.what();
         return result;
     }
+}
+
+Result MongoDB::addReviewByBookId(std::string const& bookId, book::Review const& review) noexcept {
+    using namespace book;
+    Book book;
+    auto result = getBookById(bookId, book);
+    if (not result.ok) { return result; }
+
+    User user;
+    result = getUserById(review.user_id(), user);
+    if (not result.ok) { return result; }
+
+    book.mutable_reviews()->Add()->CopyFrom(review);
+
+    result = removeBookById(bookId);
+    if (not result.ok) { return result; }
+
+    std::string id = bookId;
+    addBookByUserId(review.user_id(), book, id);
 }

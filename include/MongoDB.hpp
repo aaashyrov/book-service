@@ -50,6 +50,7 @@ class MongoDB : public Singleton<MongoDB> {
     Result getUserById(std::string const& id, book::User& user) noexcept;
     Result getBookById(std::string const& bookId, book::Book& book) noexcept;
     Result getBooksByUserId(std::string const& userId, book::Books& books) noexcept;
+    Result addReviewByBookId(std::string const& bookId, book::Review const& review) noexcept;
     Result addBookByUserId(std::string const& id, book::Book& book, std::string& bookId) noexcept;
     Result updateUserFieldById(std::string const& id, std::string const& name, std::string const& value) noexcept;
 
