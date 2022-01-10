@@ -1,4 +1,4 @@
-Simpliest book-service on C++
+`book-service` on C++
 =============================
 
 Task:
