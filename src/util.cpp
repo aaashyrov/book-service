@@ -9,14 +9,14 @@ std::string generateId(const std::string& name) noexcept {
     return std::to_string(id);
 }
 
-std::string to_string(google::protobuf::Message const& message) noexcept {
+std::string toString(google::protobuf::Message const& message) noexcept {
     std::string json;
     google::protobuf::util::MessageToJsonString(message, &json);
     return json;
 }
 
-Json::Value to_json(google::protobuf::Message const& message) noexcept {
-    std::string raw = to_string(message);
+Json::Value toJson(google::protobuf::Message const& message) noexcept {
+    std::string raw = toString(message);
     JSONCPP_STRING err;
     Json::Value value;
     Json::CharReaderBuilder builder;

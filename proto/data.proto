@@ -29,9 +29,8 @@ enum Genre {
   Prayer = 17;
   Religion = 18;
   Textbook = 19;
-  Review = 20;
-  Science = 21;
-  Travel = 22;
+  Science = 20;
+  Travel = 21;
 
   Adventure = 101;
   AltHistory = 102;
@@ -77,6 +76,11 @@ message Deal{
   float price = 2;
 }
 
+message Review{
+  string user_id = 1;
+  string description = 2;
+}
+
 message Book {
   string id = 1;
   BookType book_type = 2;
@@ -87,7 +91,7 @@ message Book {
   Date publish = 7;
   string authors = 8;
   repeated string quotes = 9;
-  repeated string reviews = 10;
+  repeated Review reviews = 10;
   string user_id = 11;
 }
 
@@ -116,9 +120,29 @@ message Status{
   string message = 2;
 }
 
+message GetBookResponse{
+  Status status = 1;
+  Book book = 2;
+}
+
+message GetUserResponse{
+  Status status = 1;
+  User user = 2;
+}
+
 message GetUsersListResponse{
   Status status = 1;
   Users content = 2;
+}
+
+message AddUserBookResponse{
+  Status status = 1;
+  string id = 2;
+}
+
+message DelBookResponse{
+  Status status = 1;
+  string id = 2;
 }
 
 message GetBooksListResponse{
@@ -126,3 +150,7 @@ message GetBooksListResponse{
   Books content = 2;
 }
 
+message DBSnapshot{
+  Users users = 1;
+  Books books = 2;
+}

@@ -41,13 +41,13 @@ set(HEADERS
         include/MongoDB.hpp
         include/Singleton.hpp
         include/Controller.hpp
-        include/Database.hpp
+        include/Demo.hpp
         )
 
 set(SOURCES
         src/MongoDB.cpp
         src/Controller.cpp
-        src/Database.cpp
+        src/Demo.cpp
         src/util.cpp
         )
 

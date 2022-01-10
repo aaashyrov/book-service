@@ -8,10 +8,13 @@
 #include <drogon/HttpTypes.h>
 #include <drogon/plugins/Plugin.h>
 
-class Database : public drogon::Plugin<Database> {
+class Demo : public drogon::Plugin<Demo> {
    public:
     void initAndStart(Json::Value const& config) final;
     void shutdown() final;
    public:
     MongoDB::Ptr db;
+
+   private:
+    std::vector<std::string> userIds;
 };

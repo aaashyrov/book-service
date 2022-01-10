@@ -159,20 +159,12 @@ Result MongoDB::updateUserFieldById(const std::string& id, const std::string& fi
     }
 }
 
-Result MongoDB::removeBookByUserId(const std::string& id, const std::string& bookId) noexcept {
+Result MongoDB::removeBookById(const std::string& bookId) noexcept {
     Result result;
     result.ok = false;
     try {
         using bsoncxx::builder::stream::document;
         using bsoncxx::builder::stream::finalize;
-
-        book::User user;
-        result = getUserById(id, user);
-        if (not result.ok) {
-            result.ok = false;
-            result.message = "User " + id + " doesnt exist";
-            return result;
-        }
 
         auto value = m_connection->collections.book.delete_one(document {} << "id" << bookId << finalize);
         if (not value) {
@@ -216,8 +208,8 @@ Result MongoDB::addBookByUserId(const std::string& userId, book::Book& book, std
         }
 
         bookId = generateId(book.name() + userId + book.authors());
-        book.set_user_id(userId);
-        m_connection->collections.user.insert_one(MessageToBsonDocumentValue(book));
+        book.set_id(userId);
+        m_connection->collections.book.insert_one(MessageToBsonDocumentValue(book));
 
         result.ok = true;
         return result;
@@ -271,6 +263,22 @@ Result MongoDB::getBooks(book::Books& books) noexcept {
     }
 }
 
+Result MongoDB::removeBooksByUserId(const std::string& userId) noexcept {
+    Result result;
+    result.ok = false;
+    try {
+        using namespace bsoncxx::builder::stream;
+        m_connection->collections.book.delete_many(document {} << "userId" << userId << finalize);
+
+        result.ok = true;
+        return result;
+    } catch (std::exception& ex) {
+        result.ok = false;
+        result.message = ex.what();
+        return result;
+    }
+}
+
 Result MongoDB::getUsers(book::Users& users) noexcept {
     Result result;
     result.ok = false;
@@ -287,6 +295,26 @@ Result MongoDB::getUsers(book::Users& users) noexcept {
         return result;
     } catch (std::exception& ex) {
         result.ok = false;
+        result.message = ex.what();
+        return result;
+    }
+}
+Result MongoDB::getBookById(const std::string& bookId, book::Book& book) noexcept {
+    Result result;
+    result.ok = false;
+    try {
+        using namespace bsoncxx::builder::stream;
+        auto value = m_connection->collections.book.find_one(document {} << "id" << bookId << finalize);
+
+        if (not value) {
+            result.message = "Id " + bookId + " is not found";
+            return result;
+        }
+
+        book = BsonDocumentValueToMessage<book::Book>(*value);
+        result.ok = true;
+        return result;
+    } catch (std::exception& ex) {
         result.message = ex.what();
         return result;
     }

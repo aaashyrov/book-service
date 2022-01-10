@@ -38,11 +38,13 @@
   },
   "plugins": [
     {
-      "name": "Database",
+      "name": "Demo",
       "dependencies": [],
       "config": {
-        "ip_addr": "127.0.0.1",
-        "name": "Test1"
+        "db_ip_addr": "127.0.0.1",
+        "db_name": "test",
+        "testFill": true,
+        "snapshot": "/home/alisher/CLionProjects/books/config/snapshot.json"
       }
     }
   ]

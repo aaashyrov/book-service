@@ -34,6 +34,7 @@ T BsonDocumentValueToMessage(bsoncxx::document::value const& value) {
 
 std::string generateId(const std::string& name) noexcept;
 
-std::string to_string(google::protobuf::Message const& message) noexcept;
+std::string toString(google::protobuf::Message const& message) noexcept;
 
-Json::Value to_json(google::protobuf::Message const& message) noexcept;
+Json::Value toJson(google::protobuf::Message const& message) noexcept;
+
