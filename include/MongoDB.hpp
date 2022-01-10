@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <Connection.hpp>
 #include <Singleton.hpp>
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
@@ -19,11 +20,15 @@ struct Result {
     std::string message;
 };
 
+struct Param {
+    std::string ipAddr;
+    std::string dbName;
+};
+
 class MongoDB : public Singleton<MongoDB> {
    public:
-    struct Connection;
-
    public:
+    ~MongoDB() = default;
     MongoDB(MongoDB const&) = delete;
     MongoDB(MongoDB&&) noexcept = default;
     MongoDB& operator=(MongoDB const&) = delete;
@@ -33,7 +38,7 @@ class MongoDB : public Singleton<MongoDB> {
     friend Singleton<MongoDB>;
 
    protected:
-    MongoDB(std::string const& ip, std::string const& name) noexcept;
+    MongoDB(Param const& book, Param const& user) noexcept;
 
    public:
     Result getUsers(book::Users& users) noexcept;
@@ -49,5 +54,6 @@ class MongoDB : public Singleton<MongoDB> {
     Result updateUserFieldById(std::string const& id, std::string const& name, std::string const& value) noexcept;
 
    private:
-    std::unique_ptr<Connection> m_connection;
+    std::unique_ptr<Connection> m_bookConnection;
+    std::unique_ptr<Connection> m_userConnection;
 };

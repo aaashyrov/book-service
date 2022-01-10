@@ -5,14 +5,19 @@
 #include <fstream>
 #include <util.hpp>
 void Demo::initAndStart(const Json::Value& config) {
-    std::string ipAddress = config["db_ip_addr"].asString();
-    std::string name = config["db_name"].asString();
-    db = MongoDB::instance(ipAddress, name);
+    Param user, book;
+    user.dbName = config["user_db_name"].asString();
+    user.ipAddr = config["user_db_ip_addr"].asString();
+
+    book.dbName = config["book_db_name"].asString();
+    book.ipAddr = config["book_db_ip_addr"].asString();
+
+    db = MongoDB::instance(book, user);
 
     using namespace book;
-    bool isTestFill = config["testFill"].asBool();
-    if (not isTestFill) {
-        std::cout << "db " << ipAddress << "/" << name << " is initialized\n";
+    bool isFill = config["fill"].asBool();
+    if (not isFill) {
+        std::cout << "db user: " << user.ipAddr << "/" << user.dbName << " book: " << book.ipAddr << "/" << book.dbName << " is initialized\n";
         return;
     }
 
@@ -47,7 +52,7 @@ void Demo::initAndStart(const Json::Value& config) {
         db->addBookByUserId(book.user_id(), book, id);
     }
 
-    std::cout << "db " << ipAddress << "/" << name << " is initialized\n";
+    std::cout << "db user: " << user.ipAddr << "/" << user.dbName << " book: " << book.ipAddr << "/" << book.dbName << " is initialized\n";
 }
 
 void Demo::shutdown() {
