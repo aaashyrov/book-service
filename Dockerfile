@@ -68,6 +68,7 @@ RUN rm -rf ./*build*/ && \
     cmake --build build --target install
 
 RUN cp /usr/src/book-service/config/config.json /usr/local/etc/config.json
+RUN cp /usr/src/book-service/config/snapshot.json /usr/local/etc/snapshot.json
 
 EXPOSE 8080
 
