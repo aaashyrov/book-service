@@ -3,6 +3,7 @@
 //
 #pragma once
 #include <MongoDB.hpp>
+#include <json/json.h>
 
 template <typename T>
 bsoncxx::document::value MessageToBsonDocumentValue(T const& message) {
@@ -31,4 +32,9 @@ T BsonDocumentValueToMessage(bsoncxx::document::value const& value) {
     return message;
 }
 
-std::string generateId(const std::string& name)noexcept;
+std::string generateId(const std::string& name) noexcept;
+
+std::string toString(google::protobuf::Message const& message) noexcept;
+
+Json::Value toJson(google::protobuf::Message const& message) noexcept;
+

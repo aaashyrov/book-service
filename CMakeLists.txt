@@ -34,18 +34,20 @@ endforeach ()
 
 set(PROTOS
         proto/data.proto
-        proto/operation.proto
         )
 
 set(HEADERS
+        include/util.hpp
         include/MongoDB.hpp
         include/Singleton.hpp
-        include/util.hpp
+        include/Controller.hpp
+        include/Demo.hpp
         )
 
 set(SOURCES
         src/MongoDB.cpp
         src/Controller.cpp
+        src/Demo.cpp
         src/util.cpp
         )
 

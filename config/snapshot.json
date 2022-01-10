@@ -1,0 +1,189 @@
+{
+  "users": {
+    "users": [
+      {
+        "id": "2964604866",
+        "login": "se7enrains",
+        "name": "Pete",
+        "lastname": "Ivanov",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1998
+        },
+        "email": "se7enrains@mail.ru",
+        "tel": "1234556",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "3419081864",
+        "login": "ofay54",
+        "name": "Kare",
+        "lastname": "Chick",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 2001
+        },
+        "email": "ofay54@mail.ru",
+        "tel": "1234567",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "1837943884",
+        "login": "viki",
+        "name": "Vika",
+        "lastname": "Simo",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1993
+        },
+        "email": "viki@mail.ru",
+        "tel": "98765321",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "396844864",
+        "login": "sashka",
+        "name": "Sasha",
+        "lastname": "Shido",
+        "birthday": {
+          "day": 1,
+          "month": 1,
+          "year": 1995
+        },
+        "email": "shido@mail.ru",
+        "tel": "187387342",
+        "password": "qwerty12345"
+      },
+      {
+        "id": "1116652169",
+        "login": "diasha",
+        "name": "Dia",
+        "lastname": "Biru",
+        "birthday": {
+          "day": 22,
+          "month": 12,
+          "year": 1998
+        },
+        "email": "dia@mail.ru",
+        "tel": "555555",
+        "password": "qwerty12345"
+      }
+    ]
+  },
+  "books": {
+    "books": [
+      {
+        "id": "2964604866",
+        "bookType": "Fiction",
+        "genre": "Drama",
+        "name": "1984",
+        "deal": {
+          "dealType": "SaleAndExchange",
+          "price": 15
+        },
+        "publish": {
+          "day": 2,
+          "month": 2,
+          "year": 2010
+        },
+        "authors": "George Orwell",
+        "quotes": [
+          "Big brother is watching you!",
+          "War is peace.Freedom is slavery.Ignorance is strength.",
+          "Who controls the past controls the future. Who controls the present controls the past"
+        ],
+        "reviews": [
+          {
+            "userId": "2964604866",
+            "description": "Awesome book!"
+          }
+        ],
+        "userId": "2964604866"
+      },
+      {
+        "id": "2964604866",
+        "bookType": "Fiction",
+        "genre": "Drama",
+        "name": "Animals Farm",
+        "deal": {
+          "dealType": "SaleAndExchange",
+          "price": 10
+        },
+        "publish": {
+          "day": 2,
+          "month": 2,
+          "year": 2017
+        },
+        "authors": "George Orwell",
+        "quotes": [
+          "Big brother is watching you!",
+          "War is peace.Freedom is slavery.Ignorance is strength.",
+          "Who controls the past controls the future. Who controls the present controls the past",
+          "All animals are equal, but some animals are more equal than others",
+          "Four legs good, two legs bad",
+          "The only good human being is a dead one"
+        ],
+        "reviews": [
+          {
+            "userId": "2964604866",
+            "description": "Awesome book!"
+          },
+          {
+            "userId": "2964604866",
+            "description": "Worth money book!"
+          }
+        ],
+        "userId": "2964604866"
+      },
+      {
+        "id": "3419081864",
+        "bookType": "Fiction",
+        "genre": "Fantasy",
+        "name": "arry Potter and the Chamber of Secrets",
+        "deal": {
+          "dealType": "SaleOnly",
+          "price": 13
+        },
+        "publish": {
+          "day": 12,
+          "month": 3,
+          "year": 2015
+        },
+        "authors": "J. Rowling",
+        "quotes": [
+          "Big brother is watching you!",
+          "War is peace.Freedom is slavery.Ignorance is strength.",
+          "Who controls the past controls the future. Who controls the present controls the past",
+          "All animals are equal, but some animals are more equal than others",
+          "Four legs good, two legs bad",
+          "The only good human being is a dead one",
+          "It is our choices, Harry, that show what we truly are, far more than our abilities",
+          "Things we lose have a way of coming back to us in the end, if not always in the way we expect",
+          "It does not do to dwell on dreams and forget to live"
+        ],
+        "reviews": [
+          {
+            "userId": "2964604866",
+            "description": "Awesome book!"
+          },
+          {
+            "userId": "2964604866",
+            "description": "Worth money book!"
+          },
+          {
+            "userId": "3419081864",
+            "description": "A good fantasy book!"
+          },
+          {
+            "userId": "2964604866",
+            "description": "I'm loving this book!"
+          }
+        ],
+        "userId": "3419081864"
+      }
+    ]
+  }
+}
