@@ -44,7 +44,7 @@
         "db_ip_addr": "127.0.0.1",
         "db_name": "test",
         "testFill": true,
-        "snapshot": "/home/alisher/CLionProjects/books/config/snapshot.json"
+        "snapshot": "/usr/src/book-service/config/snapshot.json"
       }
     }
   ]
