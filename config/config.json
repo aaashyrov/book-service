@@ -41,9 +41,9 @@
       "name": "Demo",
       "dependencies": [],
       "config": {
-        "book_db_ip_addr": "127.0.0.1",
+        "book_db_ip_addr": "127.0.0.1:27017",
         "book_db_name": "book",
-        "user_db_ip_addr": "127.0.0.1",
+        "user_db_ip_addr": "127.0.0.1:27017",
         "user_db_name": "user",
         "fill": true,
         "snapshot": "/home/alisher/CLionProjects/books/config/snapshot.json"
