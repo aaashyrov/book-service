@@ -46,7 +46,7 @@
         "user_db_ip_addr": "127.0.0.1:27017",
         "user_db_name": "user",
         "fill": true,
-        "snapshot": "/home/alisher/CLionProjects/books/config/snapshot.json"
+        "snapshot": "/usr/local/etc/snapshot.json"
       }
     }
   ]
