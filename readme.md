@@ -8,6 +8,10 @@ REQUIREMENTS
 ------------
 - Ubuntu 20.04.1 LTS (Focal Fossa)
 - С++ 17
+- protobuf 3.6.0
+- mongocxx 3.6.0
+- mongo-c-driver 1.17.0
+- gcc 9.3.0
 - CMake 3.16
 - MongoDB v3.6.8
 - Docker (optional)
