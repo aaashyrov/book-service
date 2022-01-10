@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(books)
+project(book-service)
 
 if (NOT CMAKE_C_STANDARD)
     set(CMAKE_C_STANDARD 99)
@@ -22,7 +22,6 @@ set(DEPENDENCIES
         mongocxx
         bsoncxx
         )
-
 
 foreach (DEPENDENCE IN LISTS DEPENDENCIES)
     find_package(${DEPENDENCE} REQUIRED)
@@ -91,3 +90,5 @@ target_link_libraries(${PROJECT_NAME}
         )
 
 add_subdirectory(test)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
