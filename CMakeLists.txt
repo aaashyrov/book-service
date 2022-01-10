@@ -90,3 +90,5 @@ target_link_libraries(${PROJECT_NAME}
         )
 
 add_subdirectory(test)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
