@@ -24,21 +24,12 @@ RUN apt-get update && \
                         gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools libpng-dev \
                         gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 libxml2-dev \
                         gstreamer1.0-pulseaudio libgtk2.0-dev libglib2.0-dev gir1.2-gobject-2.0 zlib1g-dev libusb-1.0-0-dev \
-                        rapidjson-dev libconfig++-dev && \
+                        rapidjson-dev libconfig++-dev libprotobuf-dev protobuf-compiler libgrpc++-dev libgrpc++1 \
+                        libgrpc-dev protobuf-compiler-grpc && \
     apt-get clean && \
     ln -s /usr/include/jsoncpp/json/ /usr/include/json
 
 WORKDIR /tmp
-
-RUN git clone --recurse-submodules -b v1.42.0 https://github.com/grpc/grpc.git && \
-    cd grpc && \
-    mkdir -p cmake/build \
-    pushd cmake/build \
-    cmake -DgRPC_INSTALL=ON -DgRPD_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ../.. && \
-    make && \
-    make install && \
-    popd
-
 
 WORKWIR /tmp
 RUN curl -L -O https://github.com/mongodb/mongo-c-driver/releases/download/1.17.0/mongo-c-driver-1.17.0.tar.gz && \
@@ -46,7 +37,7 @@ RUN curl -L -O https://github.com/mongodb/mongo-c-driver/releases/download/1.17.
     cd mongo-c-driver-1.17.0 && \
     mkdir build && cd build && \
     cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=OFF -DENABLE_TESTS=OFF .. && \
-    make && make install
+    make -j8 && make install
 
 WORKDIR /tmp
 RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.0/mongo-cxx-driver-r3.6.0.tar.gz \
