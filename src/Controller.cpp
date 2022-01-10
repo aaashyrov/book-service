@@ -191,5 +191,36 @@ namespace v1 {
         std::cout << "del book done " << std::endl;
     }
 
+    void Controller::addBookReview(const HttpRequestPtr& req, Controller::Callback&& callback, std::string&& bookId) {
+        std::cout << "add book review start " << std::endl;
+
+        using namespace book;
+        std::string data {req->getBody()};
+
+        Review review;
+        google::protobuf::util::JsonParseOptions parseOptions;
+        parseOptions.ignore_unknown_fields = true;
+        google::protobuf::util::JsonStringToMessage(data, &review, parseOptions);
+
+        AddReviewResponse addReviewResponse;
+
+        auto result = getMongo()->addReviewByBookId(bookId, review);
+        if (not result.ok) {
+            addReviewResponse.mutable_status()->set_ok(false);
+            addReviewResponse.mutable_status()->set_message(result.message);
+            auto response = HttpResponse::newHttpJsonResponse(toJson(addReviewResponse));
+            callback(response);
+
+            std::cout << "add book review done " << std::endl;
+            return;
+        }
+
+        addReviewResponse.mutable_status()->set_ok(true);
+        auto response = HttpResponse::newHttpJsonResponse(toJson(addReviewResponse));
+        callback(response);
+
+        std::cout << "add book review done " << std::endl;
+    }
+
 }// namespace v1
 }// namespace api

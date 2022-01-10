@@ -150,6 +150,10 @@ message GetBooksListResponse{
   Books content = 2;
 }
 
+message AddReviewResponse{
+  Status status = 1;
+}
+
 message DBSnapshot{
   Users users = 1;
   Books books = 2;

@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get dist-upgrade -y && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get update && \
-    apt-get install -y  build-essential autoconf automake cmake  curl wget gcc g++ git libtool make unzip mc  \
+    apt-get install -y  build-essential autoconf automake cmake  curl wget gcc g++ git libtool gzip make unzip mc  \
                         lsb-release wgetpkg-config libboost-all-dev  libjsoncpp-dev libconfig++-dev  libprotobuf-dev \
                         protobuf-compiler libgrpc++-dev libgrpc++1 libgrpc-dev protobuf-compiler-grpc && \
     apt-get clean && \

@@ -35,9 +35,10 @@ namespace v1 {
         METHOD_ADD(Controller::getUser, "/user/{1}", Get, Options);
         METHOD_ADD(Controller::getUserList, "/users", Get, Options);
         METHOD_ADD(Controller::getBookList, "/books", Get, Options);
+        METHOD_ADD(Controller::delBook, "/book/del/{1}", Post, Options);
         METHOD_ADD(Controller::getUserBookList, "/user/books/{1}", Get, Options);
         METHOD_ADD(Controller::addUserBook, "/user/book/add/{1}", Post, Options);
-        METHOD_ADD(Controller::delBook, "/book/del/{1}", Post, Options);
+        METHOD_ADD(Controller::addBookReview, "/book/review/add/{1}", Post, Options);
         METHOD_LIST_END
 
        public:
@@ -47,6 +48,7 @@ namespace v1 {
         void getBook(HttpRequestPtr const& req, Callback&& callback, std::string&& bookId);
         void delBook(HttpRequestPtr const& req, Callback&& callback, std::string&& bookId);
         void addUserBook(HttpRequestPtr const& req, Callback&& callback, std::string&& userId);
+        void addBookReview(HttpRequestPtr const& req, Callback&& callback, std::string&& bookId);
         void getUserBookList(HttpRequestPtr const& req, Callback&& callback, std::string&& userId);
 
        private:

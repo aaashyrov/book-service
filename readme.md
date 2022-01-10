@@ -23,7 +23,7 @@ TIPS
 - You can use `docker-compose.yml` file to install and run mongo quickly
 - You should build the system by its `Dockerfile`
 
-API
+AVAILABLE API
 ----
 
 - `/api/v1/controller/book/del/{bookId}`-removes a book by its id (POST)
@@ -33,3 +33,4 @@ API
 - `/api/v1/controller/books`-gets books list (GET)
 - `/api/v1/controller/user/books/{userId}`-gets list of books of a user by id (GET)
 - `/api/v1/controller/book/add/{userId}`-adds a book into a user container by id (POST)
+- `/api/v1/controller/book/review/add/{bookId}`-adds a book review by its id from a user (POST)
