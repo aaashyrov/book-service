@@ -1,9 +1,9 @@
-ARG UBUNTUVERSION
+ARG UBUNTUVERSION=20.04
 FROM ubuntu:$UBUNTUVERSION
 
 MAINTAINER Alisher Ashyrov <alisher_ashyrov@mail.ru>
 
-ARG TIMEZONE
+ARG TIMEZONE="Europe/Minsk"
 
 WORKDIR /
 RUN apt-get update && \
@@ -58,3 +58,17 @@ RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.
    cmake --build . --target install
 
 RUN ldconfig
+
+WORKDIR /usr/src/book-service
+
+COPY . ./
+
+RUN rm -rf ./*build*/ && \
+    cmake -DCMAKE_BUILD_TYPE=Release -B build && \
+    cmake --build build --target install
+
+RUN cp /usr/src/book-service/config/config.json /usr/local/etc/config.json
+
+EXPOSE 8080
+
+ENTRYPOINT /usr/local/bin/book-service /usr/local/etc/config.json
