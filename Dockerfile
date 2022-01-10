@@ -55,7 +55,7 @@ RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.
     cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local \
     cmake --build . --target EP_mnmlstc_core \
     cmake --build . \
-   cmake --build . --target install
+    cmake --build . --target install
 
 RUN ldconfig
 
