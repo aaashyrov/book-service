@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.8"
 services:
   mongo:
     container_name: mongo
@@ -6,16 +6,6 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-
-  books:
-    image: "books_server:latest"
-    build:
-      context: "./"
-      dockerfile: "Dockerfile"
-      args:
-        TIMEZONE: "Europe/Minsk"
-        UBUNTUVERSION: "20.04"
-
-    depends_on:
-      - mongo
-
+    restart: unless-stopped
+    volumes:
+      - /tmp:/data/db
